@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACNUTRINO PRODUCTS PVT LTD – Cultivating Success, Naturally.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base & Variables --- */
+        :root {
+            --color-primary: #1A2E35;
+            --color-secondary: #2A4A36;
+            --color-accent: #34D399;
+            --color-accent-dark: #2aa779;
+            --color-neutral-1: #FFFFFF;
+            --color-neutral-2: #F4F7F6;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-primary);
+            background-color: var(--color-neutral-1);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            font-weight: 600;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--color-accent-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: var(--color-primary);
+            font-weight: 600;
+            border-radius: 5px;
+            text-decoration: none;
+            border: 2px solid var(--color-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary);
+            color: var(--color-neutral-1);
+        }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .nav-logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--color-primary);
+        }
+
+
+        /* --- Page Sections --- */
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        #home {
+            padding-top: 80px; /* Offset for fixed header */
+        }
+        
+        /* --- Hero Section --- */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: #555;
+        }
+        
+        /* --- Farmer's Challenge Section --- */
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .challenge-card {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        .challenge-card span {
+            font-size: 2.5rem;
+        }
+        .transitional-text {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- Our Solutions Section --- */
+        #solutions {
+            background-color: var(--color-neutral-2);
+        }
+        .solutions-grid {
+            display: grid;
+            gap: 30px;
+            /* Default to single column for mobile-first */
+            grid-template-columns: 1fr;
+        }
+        .solution-card {
+            background: var(--color-neutral-1);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+        .solution-card h3 {
+            font-size: 1.25rem;
+        }
+        .solution-card em {
+            font-weight: 500;
+            color: #555;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .solution-card .products-list {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 15px 0;
+        }
+        .solution-card .btn {
+            margin-top: 15px;
+        }
+        
+        /* --- Featured Products Section (Dark Theme) --- */
+        .dark-section {
+            background-color: var(--color-secondary);
+            color: var(--color-neutral-2);
+        }
+        .dark-section h2 {
+            color: var(--color-neutral-1);
+        }
+        .dark-section .transitional-text {
+            color: #ccc;
+        }
+
+        .featured-products-grid {
+            display: grid;
+            gap: 20px;
+            /* Default to single column for mobile-first */
+            grid-template-columns: 1fr;
+        }
+        .featured-product-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .featured-product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        .featured-product-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .featured-product-card ul {
+            list-style: none;
+            font-size: 0.85rem;
+            color: #ccc;
+            padding-left: 0;
+        }
+        .featured-product-card ul li::before {
+            content: '✓';
+            color: var(--color-accent);
+            margin-right: 8px;
+        }
+
+        /* --- Why Choose & Testimonials Section --- */
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .benefit-item span {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .testimonial-card {
+            border-left: 4px solid var(--color-accent);
+            padding-left: 25px;
+        }
+        .testimonial-card blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #333;
+            margin: 0 0 10px 0;
+        }
+        .testimonial-card cite {
+            font-weight: 600;
+        }
+
+        /* --- Final CTA Section --- */
+        .final-cta {
+            background-color: var(--color-neutral-2);
+            text-align: center;
+        }
+        .final-cta h2 {
+            margin-bottom: 30px;
+        }
+        .final-cta .btn-secondary {
+            margin-left: 20px;
+        }
+
+        /* --- Products Page --- */
+        .products-page {
+            padding-top: 120px;
+            min-height: 100vh;
+            background-color: var(--color-neutral-2);
+        }
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-neutral-1);
+            color: var(--color-accent);
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: var(--color-neutral-1);
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+        .product-card-img-container {
+            height: 250px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .product-card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .product-card-info {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+        .product-card-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .product-card-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* --- Product Detail Page --- */
+        .product-detail-page {
+            padding: 120px 20px;
+            min-height: 100vh;
+        }
+        .product-detail-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: flex-start;
+        }
+        .product-detail-image {
+            background: var(--color-neutral-2);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .product-detail-image img {
+            max-width: 100%;
+        }
+        .product-detail-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .product-detail-content .description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .product-tabs {
+            margin-top: 40px;
+        }
+        .tab-buttons {
+            display: flex;
+            border-bottom: 2px solid #eee;
+        }
+        .tab-btn {
+            padding: 15px 25px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #888;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .tab-btn.active {
+            color: var(--color-accent);
+        }
+        .tab-btn:hover {
+            color: var(--color-primary);
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-accent);
+        }
+        .tab-content {
+            display: none;
+            padding: 30px 0;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .tab-content li {
+            margin-bottom: 10px;
+        }
+         .tab-content li strong {
+            display: block;
+            color: var(--color-primary);
+         }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--color-secondary);
+            color: var(--color-neutral-2);
+            padding: 60px 0;
+            font-size: 0.9rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        .footer-grid h4 {
+            color: var(--color-neutral-1);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        .footer-grid p, .footer-grid a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        .footer-grid a:hover {
+            color: var(--color-accent);
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- DESKTOP & WIDE SCREEN STYLES (where new layouts apply) --- */
+        @media (min-width: 992px) {
+            /* Solutions Grid: 3 columns, with 4th card centered on second row */
+            .solutions-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .solutions-grid .solution-card:nth-child(4) {
+                grid-column-start: 2;
+                grid-column-end: 3;
+            }
+
+            /* Featured Products Grid: 6-col grid for staggered 3-then-2 layout */
+            .featured-products-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 20px; 
+            }
+            .featured-products-grid .featured-product-card {
+                /* Reset properties for explicit placement */
+                grid-column: auto / auto;
+                grid-row: auto / auto;
+            }
+            .featured-products-grid .featured-product-card:nth-child(1) { grid-column: 1 / 3; }
+            .featured-products-grid .featured-product-card:nth-child(2) { grid-column: 3 / 5; }
+            .featured-products-grid .featured-product-card:nth-child(3) { grid-column: 5 / 7; }
+            .featured-products-grid .featured-product-card:nth-child(4) { grid-column: 2 / 4; grid-row: 2; }
+            .featured-products-grid .featured-product-card:nth-child(5) { grid-column: 4 / 6; grid-row: 2; }
+            
+            /* Other desktop grid layouts */
+            .why-choose-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+             .product-detail-layout {
+                grid-template-columns: 1fr 1.2fr;
+            }
+        }
+        
+        /* --- MOBILE FRIENDLY MEDIA QUERIES --- */
+        @media (max-width: 991px) {
+             .solutions-grid, .featured-products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 60px 0; }
+
+            .nav-links {
+                position: absolute;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: var(--color-neutral-1);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+                gap: 0;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .nav-links li {
+                padding: 15px 0;
+                border-bottom: 1px solid var(--color-neutral-2);
+            }
+            .hamburger {
+                display: block;
+            }
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        @media (max-width: 576px) {
+             .hero h1 {
+                font-size: 1.8rem;
+            }
+            .final-cta {
+                text-align: center;
+            }
+            .final-cta .btn {
+                 margin-bottom: 15px;
+            }
+            .final-cta .btn-secondary {
+                margin-left: 0;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar container">
+            <a href="#" class="nav-logo nav-link" data-page="home"><img src="SACNUTRINO LOGO.png" alt="Sacnutrino Logo"></a>
+            
+            <ul class="nav-links" id="nav-menu">
+                <li><a class="nav-link" data-page="home">Home</a></li>
+                <li><a href="#challenges" class="nav-link scroll-link">Our Mission</a></li>
+                <li><a href="#solutions" class="nav-link scroll-link">Categories</a></li>
+                <li><a href="#featured-products" class="nav-link scroll-link">Featured</a></li>
+                <li><a class="nav-link" data-page="products-page">All Products</a></li>
+            </ul>
+            
+            <button class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="container reveal">
+                    <h1>“Unlock Your Farm’s Full Potential: Achieve Abundant, Healthy Harvests with SACNUTRINO’s Advanced Bio-Solutions!”</h1>
+                    <p>“From powerful pest control to vibrant crop nutrition, we empower farmers to grow more, sustainably and profitably.”</p>
+                    <a href="#" class="btn nav-link" data-page="products-page">Explore Our Solutions & Boost Your Yield Today!</a>
+                </div>
+            </section>
+            
+            <section id="challenges" class="dark-section">
+                <div class="container reveal">
+                    <h2>Are You Battling These Common Farm Challenges?</h2>
+                    <div class="challenges-grid">
+                        <div class="challenge-card"><span>🐛</span><p>Pests Devouring Your Profits?</p></div>
+                        <div class="challenge-card"><span>🦠</span><p>Diseases Threatening Your Harvest?</p></div>
+                        <div class="challenge-card"><span>🌍</span><p>Soil Losing Its Vitality?</p></div>
+                        <div class="challenge-card"><span>🍅</span><p>Crops Lacking Essential Nutrients?</p></div>
+                        <div class="challenge-card"><span>💸</span><p>High Chemical Costs & Concerns?</p></div>
+                    </div>
+                    <p class="transitional-text">“At SACNUTRINO, we understand. That’s why we’ve developed innovative, sustainable solutions designed to overcome these hurdles and transform your farm.”</p>
+                </div>
+            </section>
+
+            <section id="solutions">
+                 <div class="container reveal">
+                    <h2>Introducing SACNUTRINO’s Proven Product Categories</h2>
+                    <div class="solutions-grid">
+                        <div class="solution-card">
+                            <h3>Precision Pest Control</h3>
+                            <em>Protect Your Investment, Naturally.</em>
+                            <p>“Safeguard your crops from devastating pests with targeted, chemical-free solutions that minimize damage and reduce insecticide use.”</p>
+                            <p class="products-list"><strong>Products:</strong> Pheromone Lures, Insect Traps, Solar Traps.</p>
+                            <a href="#" class="btn nav-link" data-page="products-page" data-filter="Pest Control">Discover Solutions</a>
+                        </div>
+                        <div class="solution-card">
+                            <h3>Advanced Crop Protection</h3>
+                            <em>Build Resilience, Prevent Losses.</em>
+                            <p>“Shield your plants from diseases and nematodes, fostering stronger growth and higher yields with our biological fungicides.”</p>
+                            <p class="products-list"><strong>Products:</strong> Trikut, Flouri Shield.</p>
+                            <a href="#" class="btn nav-link" data-page="products-page" data-filter="Crop Protection">Explore Protection</a>
+                        </div>
+                        <div class="solution-card">
+                            <h3>Optimal Plant Nutrition & Growth</h3>
+                            <em>Fueling Abundance.</em>
+                            <p>“Ensure your crops receive vital nutrients for explosive growth, vibrant blooms, and superior fruit quality, naturally.”</p>
+                            <p class="products-list"><strong>Products:</strong> Dr. Root, F-4, F-6, Nutrino Plus, and more.</p>
+                            <a href="#" class="btn nav-link" data-page="products-page" data-filter="Plant Nutrition">Enhance Performance</a>
+                        </div>
+                        <div class="solution-card">
+                            <h3>Sustainable Soil Health</h3>
+                            <em>The Foundation for Future Yields.</em>
+                            <p>“Revitalize your soil, accelerate composting, and unlock hidden nutrients for long-term fertility and sustainable farming practices.”</p>
+                            <p class="products-list"><strong>Products:</strong> Scavenger, Humic Acid, Fulvic Acid.</p>
+                            <a href="#" class="btn nav-link" data-page="products-page" data-filter="Soil Health">Rejuvenate Soil</a>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+
+            <section class="dark-section" id="featured-products">
+                <div class="container reveal">
+                    <h2>Featured Products</h2>
+                    <div class="featured-products-grid">
+                        <div class="featured-product-card">
+                             <img src="BACTROCERA CUCURBITAE (MELON FLY) LURE.png" alt="Melon Fly Lure">
+                             <h4>Melon Fly Lure (Bactrocera Cucurbitae)</h4>
+                             <ul>
+                                <li>Targets male melon flies</li>
+                                <li>Protects cucumber, gourds, melons</li>
+                                <li>Disrupts breeding cycle</li>
+                                <li>75–90 days of effectiveness</li>
+                                <li>Eco-friendly & insecticide-reducing</li>
+                             </ul>
+                        </div>
+                         <div class="featured-product-card">
+                             <img src="BACTROCERA DORSALIS (ORIENTAL FRUIT FLY) LURE.png" alt="Oriental Fruit Fly Lure">
+                             <h4>Oriental Fruit Fly Lure (Bactrocera Dorsalis)</h4>
+                             <ul>
+                                <li>Methyl eugenol-based lure</li>
+                                <li>Effective for mango, guava, papaya</li>
+                                <li>Disrupts male fly reproduction</li>
+                                <li>75–90 days protection</li>
+                                <li>Promotes healthier, safer fruit farming</li>
+                             </ul>
+                        </div>
+                        <div class="featured-product-card">
+                             <img src="TUTA ABSOLUTA (TOMATO LEAF MINER) LURE.png" alt="Tomato Leaf Miner Lure">
+                             <h4>Tomato Leaf Miner Lure (Tuta Absoluta)</h4>
+                             <ul>
+                                <li>Specialized pheromone attraction</li>
+                                <li>Focused on tomato crops</li>
+                                <li>Mating disruption for population control</li>
+                                <li>Effective for 30–45 days</li>
+                                <li>Supports residue-free farming</li>
+                             </ul>
+                        </div>
+                        <div class="featured-product-card">
+                             <img src="RHINOCEROS BEETLE (ORYCTES RHINOCEROS) LURE.png" alt="Rhinoceros Beetle Lure">
+                             <h4>Rhinoceros Beetle Lure (Oryctes Rhinoceros)</h4>
+                             <ul>
+                                <li>Attracts both male & female beetles</li>
+                                <li>Safeguards coconut, oil palm</li>
+                                <li>Prevents bore damage</li>
+                                <li>3 months continuous protection</li>
+                                <li>100% pesticide-free approach</li>
+                             </ul>
+                        </div>
+                         <div class="featured-product-card">
+                             <img src="RED PALM WEEVIL (RHYNCHOPHORUS FERRUGINEUS) LURE.png" alt="Red Palm Weevil Lure">
+                             <h4>Red Palm Weevil Lure (Rhynchophorus Ferrugineus)</h4>
+                             <ul>
+                                <li>Powerful chemical-free lure</li>
+                                <li>Mass trapping disrupts population</li>
+                                <li>Protects coconut, oil palm, date palm</li>
+                                <li>Long-lasting performance</li>
+                                <li>Perfect for integrated pest management</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="why-choose">
+                <div class="container reveal">
+                    <h2>Your Partner in Sustainable & Profitable Agriculture</h2>
+                    <div class="why-choose-grid">
+                        <div class="benefit-item"><span>✅</span><p><strong>Proven Results:</strong> Noticeable yield, health, and quality improvements</p></div>
+                        <div class="benefit-item"><span>✅</span><p><strong>Eco-Friendly & Sustainable:</strong> Reducing chemical use and protecting land</p></div>
+                        <div class="benefit-item"><span>✅</span><p><strong>Innovation at Our Core:</strong> Powered by biotech and scientific formulation</p></div>
+                        <div class="benefit-item"><span>✅</span><p><strong>Government Approved:</strong> Products like F-4 & F-6 are Telangana Govt. certified</p></div>
+                        <div class="benefit-item"><span>✅</span><p><strong>Dedicated Support:</strong> We're here to guide your farming journey</p></div>
+                    </div>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <blockquote>"Since using SACNUTRINO's lures, my fruit damage has dropped by 80%! Truly a game changer."</blockquote>
+                            <cite>– Ramesh, Mango Farmer – Nalgonda, Telangana</cite>
+                        </div>
+                        <div class="testimonial-card">
+                            <blockquote>"Trikut worked wonders for my turmeric crops. Zero fungus this year!"</blockquote>
+                            <cite>– Kavitha, Organic Farmer – Karimnagar, Telangana</cite>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="final-cta">
+                <div class="container reveal">
+                    <h2>Take the First Step Towards a More Productive & Profitable Farm!</h2>
+                    <a href="#footer" class="btn">Contact Our Experts Today!</a>
+                    <a href="#" class="btn-secondary nav-link" data-page="products-page">View All Products</a>
+                </div>
+            </section>
+
+        </div>
+
+        <div id="products-page" class="page products-page">
+            <div class="container">
+                <h2>Our Products</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="Pest Control">Precision Pest Control</button>
+                    <button class="filter-btn" data-filter="Crop Protection">Advanced Crop Protection</button>
+                    <button class="filter-btn" data-filter="Plant Nutrition">Optimal Plant Nutrition</button>
+                    <button class="filter-btn" data-filter="Soil Health">Sustainable Soil Health</button>
+                </div>
+                <div class="product-grid" id="product-grid-container">
+                    </div>
+            </div>
+        </div>
+
+        <div id="product-detail-page" class="page product-detail-page">
+             <div class="container" id="product-detail-container">
+                </div>
+        </div>
+    </main>
+
+    <footer class="footer" id="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <img src="SACNUTRINO LOGO.png" alt="Sacnutrino Logo" style="height:60px; margin-bottom: 20px;">
+                <p>Cultivating Success, Naturally. <br>Advanced bio-solutions to empower farmers to grow more, sustainably and profitably.</p>
+            </div>
+             <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>
+                    <strong>Address:</strong><br>
+                    SACNUTRINO PRODUCTS PVT LTD,<br>
+                    Sy. No. 9, Doolapally village,<br>
+                    Gandimaisamma, Rangareddy, Medchal,<br>
+                    Telangana - 500010
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Get in Touch</h4>
+                <p>
+                    <strong>Phone:</strong><br>
+                    <a href="tel:9298657699">9298657699</a><br>
+                    <a href="tel:9966512766">9966512766</a><br>
+                    <a href="tel:8919132321">8919132321</a>
+                </p>
+                <p style="margin-top:10px;">
+                    <strong>Email:</strong><br>
+                    <a href="mailto:sacnutrinoproductspvtltd@gmail.com">sacnutrinoproductspvtltd@gmail.com</a><br>
+                    <a href="mailto:sacnutrino.sales@gmail.com">sacnutrino.sales@gmail.com</a>
+                </p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2025 SACNUTRINO PRODUCTS PVT LTD. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    const productDatabase = [
+        {
+            id: 1,
+            name: "Bactrocera cucurbitae (Melon Fly) Lure",
+            category: "Pest Control",
+            image: "BACTROCERA CUCURBITAE (MELON FLY) LURE.png",
+            description: "A pheromone lure designed for the monitoring and mass trapping of the Melon Fly, which primarily affects cucurbit crops.",
+            details: [
+                { label: "Active Ingredients", value: "Methyl eugenol and cue lure" },
+                { label: "Formulation", value: "1000 mg loaded on Dispenser of choice, sealed in triple-layer pouch" },
+                { label: "Target Pest", value: "Melon fly affecting cucumber, gourds, melons, pumpkins, and tomatoes" },
+                { label: "Mode of Action", value: "Attracts male flies for monitoring and mass trapping" },
+            ],
+            application: [
+                { label: "Field Longevity", value: "75-90 days, weather-dependent" },
+                { label: "Shelf Life", value: "2 years under cool, dry storage" },
+                { label: "Application (Mass Trapping)", value: "40-50 traps/ha" },
+                { label: "Application (Monitoring)", value: "8-10 traps/ha" },
+            ],
+            benefits: ["Minimizes fruit damage and reduces insecticide usage"]
+        },
+        {
+            id: 2,
+            name: "Bactrocera dorsalis (Oriental Fruit Fly) Lure",
+            category: "Pest Control",
+            image: "BACTROCERA DORSALIS (ORIENTAL FRUIT FLY) LURE.png",
+            description: "A powerful lure for trapping the Oriental Fruit Fly, a major pest in various fruit crops.",
+            details: [
+                { label: "Active Ingredient", value: "Methyl eugenol" },
+                { label: "Formulation", value: "2000 mg impregnated on dispencer, sealed in triple-layer pouch" },
+                { label: "Target Pest", value: "Oriental fruit fly infesting mango, guava, papaya, citrus, and avocado" },
+                { label: "Mode of Action", value: "Draws male flies into traps, disrupting breeding cycles" },
+            ],
+            application: [
+                { label: "Field Longevity", value: "75-90 days" },
+                { label: "Shelf Life", value: "2 years when properly stored" },
+                { label: "Application (Mass Control)", value: "40-50 traps/ha" },
+                { label: "Application (Monitoring)", value: "8-10 traps/ha" },
+            ],
+            benefits: ["Effective alternative to chemical sprays in fruit crops"]
+        },
+        {
+            id: 3,
+            name: "Tuta absoluta (Tomato Leaf Miner) Lure",
+            category: "Pest Control",
+            image: "TUTA ABSOLUTA (TOMATO LEAF MINER) LURE.png",
+            description: "A specialized pheromone lure to control the Tuta absoluta moth, a devastating pest for tomato crops.",
+            details: [
+                { label: "Active Ingredients", value: "3E,8Z,11Z-Tetradecatrienyl Acetate & 3E,8Z-Tetradecadienyl Acetate" },
+                { label: "Formulation", value: "AI loaded in dispencer, sealed in met pet pouch" },
+                { label: "Target Pest", value: "Tuta absoluta affecting tomato and solanaceous crops" },
+                { label: "Mode of Action", value: "Captures male moths to disrupt mating cycles" },
+            ],
+            application: [
+                { label: "Field Longevity", value: "30-45 days" },
+                { label: "Shelf Life", value: "2 years in cool, dry conditions" },
+                { label: "Application (Control)", value: "40-50 traps/ha" },
+                { label: "Application (Monitoring)", value: "8-10 traps/ha" },
+            ],
+            benefits: ["Reduces damage while promoting residue-free tomato production"]
+        },
+        {
+            id: 4,
+            name: "Rhinoceros Beetle Lure",
+            category: "Pest Control",
+            image: "RHINOCEROS BEETLE (ORYCTES RHINOCEROS) LURE.png",
+            description: "An aggregation pheromone lure that attracts both sexes of the Rhinoceros Beetle, a major pest in palm plantations.",
+            details: [
+                { label: "Active Ingredient", value: "Ethyl 4-Methyl Octanoate" },
+                { label: "Formulation", value: "AI loaded in Dispenser, sealed in protective pouch" },
+                { label: "Target Pest", value: "Rhinoceros beetle in coconut, oil palm, and areca plantations" },
+                { label: "Mode of Action", value: "Attracts both sexes for effective trapping" },
+            ],
+            application: [
+                { label: "Field Longevity", value: "Up to 3 months" },
+                { label: "Shelf Life", value: "2-3 years under ideal storage" },
+                { label: "Application (Control)", value: "5-10 traps/ha" },
+                { label: "Application (Detection)", value: "1-2 traps/ha" },
+            ],
+            benefits: ["Prevents bore damage and yield loss with zero pesticide input"]
+        },
+        {
+            id: 5,
+            name: "Red Palm Weevil Lure",
+            category: "Pest Control",
+            image: "RED PALM WEEVIL (RHYNCHOPHORUS FERRUGINEUS) LURE.png",
+            description: "A highly effective lure for the mass trapping and integrated management of the Red Palm Weevil in various palm species.",
+            details: [
+                { label: "Active Ingredients", value: "4-Methyl-5-Nonanol (90%) & 4-Methyl-5-Nonanone (10%)" },
+                { label: "Formulation", value: "AI loaded in wood block, sealed in polyethylene pouch" },
+                { label: "Target Pest", value: "Red palm weevil in coconut, date palm, and oil palm" },
+                { label: "Mode of Action", value: "Mass trapping of adults to reduce infestation" },
+            ],
+            application: [
+                { label: "Field Longevity", value: "Up to 3 months" },
+                { label: "Shelf Life", value: "2-3 years in dry, shaded storage" },
+                { label: "Application (Control)", value: "5-10 traps/ha" },
+                { label: "Application (Early Detection)", value: "1-2 traps/ha" },
+            ],
+            benefits: ["Highly effective in integrated palm pest management"]
+        },
+        {
+            id: 6,
+            name: "Trikut",
+            category: "Crop Protection",
+            image: "TRIKUT.png",
+            description: "Trikut is a biological fungicide formulated with Trichoderma viride, a beneficial fungus known for its antagonistic action against harmful soil-borne pathogens. It colonizes plant roots and enhances disease resistance, making it ideal for seed treatment and soil application.",
+            details: [],
+            application: [],
+            benefits: [
+                "Improves root health, promotes vigorous plant growth, and minimizes the need for chemical fungicides.",
+                "Improves soil microflora and helps in sustainable farming practices.",
+                "Suitable for vegetables, cereals, pulses, and horticultural crops.",
+                "Compatible with organic farming standards.",
+                "Reduces crop losses due to fungal infections like damping-off, wilt, and root rot.",
+                "Enhances germination rate and plant vigor.",
+                "Trikut is eco-friendly and residue-free."
+            ]
+        },
+        {
+            id: 7,
+            name: "Flouri-Shield",
+            category: "Crop Protection",
+            image: "FLOURI SHIELD.png",
+            description: "Flouri-Shield contains Pseudomonas fluorescens, a beneficial rhizobacterium that suppresses root and foliar pathogens through competitive colonization and production of antifungal metabolites.",
+            details: [],
+            application: [
+                { label: "Application Methods", value: "Seed treatment, soil drenching, or foliar spray."}
+            ],
+            benefits: [
+                "Improves root development and plant immunity, promoting stronger growth.",
+                "Ideal for use in vegetables, pulses, cereals, and plantation crops.",
+                "Supports systemic acquired resistance (SAR) and can be used as a preventive bio-pesticide.",
+                "Enhances phosphorus solubilization and nutrient uptake.",
+                "Encourages sustainable agriculture with reduced chemical dependency.",
+                "Compatible with organic farming protocols.",
+                "Provides lasting protection in the root zone."
+            ]
+        },
+        {
+            id: 8,
+            name: "Scavenger",
+            category: "Soil Health",
+            image: "SCAVENGER.PNG",
+            description: "Scavenger is a microbial consortium designed for rapid decomposition of organic waste and residue management. It contains multiple strains of naturally occurring bacteria and fungi that break down cellulose, lignin, and other organic matter.",
+            details: [],
+            application: [
+                { label: "Application Methods", value: "Easy to apply via drenching or broadcasting." }
+            ],
+            benefits: [
+                "Improves soil organic carbon and structure.",
+                "Accelerates composting and in-situ residue degradation.",
+                "Enhances microbial diversity in the soil.",
+                "Reduces foul odor and pathogenic load in compost pits.",
+                "Ideal for use in crop fields, compost units, and organic waste disposal systems.",
+                "Supports nutrient recycling and soil fertility.",
+                "Promotes zero-waste agriculture."
+            ]
+        },
+        {
+            id: 9,
+            name: "Dr. Root",
+            category: "Plant Nutrition",
+            image: "Dr. ROOT.png",
+            description: "Dr. Root is a high-quality VAM (Vesicular Arbuscular Mycorrhiza) formulation that improves plant nutrient uptake, particularly phosphorus, zinc, and other immobile nutrients.",
+            details: [],
+            application: [
+                { label: "Usage Areas", value: "Can be used in nurseries and main fields." }
+            ],
+            benefits: [
+                "Enhances root surface area through symbiotic fungal association.",
+                "Encourages early establishment and better drought tolerance.",
+                "Suitable for wide range of crops including cereals, vegetables, fruits, and ornamentals.",
+                "Reduces transplant shock and supports soil health.",
+                "Compatible with organic farming.",
+                "Improves water absorption and nutrient use efficiency.",
+                "Supports sustainable soil fertility."
+            ]
+        },
+        {
+            id: 10,
+            name: "F4",
+            category: "Plant Nutrition",
+            image: "F4.png",
+            description: "F4 is a micronutrient powder formulation approved by Govt. of Telangana, specifically designed to correct multi-nutrient deficiencies in crops.",
+            details: [
+                { label: "Contains", value: "Essential microelements like zinc, iron, manganese, boron, and molybdenum." }
+            ],
+            application: [
+                { label: "Application Methods", value: "Suitable for foliar or soil application." }
+            ],
+            benefits: [
+                "Encourages uniform growth and improves crop yield.",
+                "Enhances photosynthesis and chlorophyll production.",
+                "Compatible with most pesticides and fertilizers.",
+                "Improves fruit and flower quality.",
+                "Minimizes physiological disorders due to nutrient imbalance.",
+                "Suitable for vegetables, pulses, cotton, and cereals.",
+                "Aids in overall crop health management."
+            ]
+        },
+        {
+            id: 11,
+            name: "F6",
+            category: "Plant Nutrition",
+            image: "F6.png",
+            description: "F6 is a Govt. of Telangana approved liquid micronutrient formulation that ensures fast correction of trace element deficiencies in crops.",
+            details: [
+                { label: "Contains", value: "Zinc, manganese, iron, boron, and copper in plant-available forms." }
+            ],
+            application: [
+                { label: "Application Methods", value: "Easy to mix and apply via foliar spray or fertigation." }
+            ],
+            benefits: [
+                "Improves flowering, fruiting, and leaf development.",
+                "Enhances plant metabolism and enzyme activation.",
+                "Ideal for horticultural and field crops.",
+                "Reduces nutrient-related physiological disorders.",
+                "Stable formulation with good shelf life.",
+                "Helps optimize plant nutrition and productivity."
+            ]
+        },
+        {
+            id: 12,
+            name: "Nutrino+",
+            category: "Plant Nutrition",
+            image: "NUTRINO PLUS.png",
+            description: "Nutrino+ is an indigenous micronutrient blend developed for balanced plant nutrition. Contains a mix of chelated trace elements in bioavailable forms.",
+            details: [],
+            application: [
+                { label: "Application Methods", value: "Suitable for soil and foliar application." }
+            ],
+            benefits: [
+                "Promotes uniform plant growth and development.",
+                "Improves chlorophyll content and photosynthesis efficiency.",
+                "Minimizes yellowing and stunted growth due to hidden hunger.",
+                "Enhances flowering and fruit setting.",
+                "Improves yield and produce quality.",
+                "Aids in the recovery from nutrient deficiencies.",
+                "Supports sustainable farming."
+            ]
+        },
+        {
+            id: 13,
+            name: "Ntrino*",
+            category: "Plant Nutrition",
+            image: "NUTRINO STAR.png",
+            description: "Ntrino* is a premium micronutrient formulation designed to address region-specific nutrient deficiencies in Indian soils.",
+            details: [
+                { label: "Contains", value: "A carefully balanced mix of zinc, iron, manganese, boron, and molybdenum." }
+            ],
+            application: [
+                { label: "Application Methods", value: "Easily absorbed through leaves and roots." }
+            ],
+            benefits: [
+                "Promotes vigorous vegetative and reproductive growth.",
+                "Enhances nutrient absorption and assimilation.",
+                "Minimizes crop stress and boosts productivity.",
+                "Ideal for high-value crops and intensive farming systems.",
+                "Non-toxic and eco-friendly.",
+                "Increases chlorophyll content and metabolic activity.",
+                "Helps achieve optimum yield potential."
+            ]
+        },
+        {
+            id: 14,
+            name: "Nourish",
+            category: "Plant Nutrition",
+            image: "NOURISH (GROWTH PROMOTER).png",
+            description: "Nourish is a vegetative growth promoter that stimulates leaf and shoot development in the early stages of crop growth. Contains plant-based bio-stimulants, amino acids, and natural growth enhancers.",
+            details: [],
+            application: [
+                { label: "Application Methods", value: "Can be applied via foliar spray or fertigation." }
+            ],
+            benefits: [
+                "Encourages robust canopy formation and root expansion.",
+                "Increases resistance to early-stage stress conditions.",
+                "Enhances nutrient uptake and metabolism.",
+                "Improves plant establishment and seedling vigor.",
+                "Suitable for use across cereals, vegetables, fruits, and cash crops.",
+                "Compatible with most crop inputs.",
+                "Ideal for boosting initial crop performance."
+            ]
+        },
+        {
+            id: 15,
+            name: "Flourish",
+            category: "Plant Nutrition",
+            image: "FLOURISH (FLOWERING PROMOTER).png",
+            description: "Flourish is a flowering promoter that supports early and synchronized flowering in crops. Formulated with phytohormones, organic compounds, and chelated micronutrients.",
+            details: [],
+            application: [
+                { label: "Application Methods", value: "Compatible with foliar spray programs." }
+            ],
+            benefits: [
+                "Helps shift plant metabolism from vegetative to reproductive stage.",
+                "Enhances flower retention and reduces flower drop.",
+                "Improves pollination efficiency and reproductive success.",
+                "Can be used in fruiting vegetables, pulses, oilseeds, and horticultural crops.",
+                "Increases the number of flowers per plant.",
+                "Supports uniform blooming for better yield quality.",
+                "Promotes high-yield potential."
+            ]
+        },
+        {
+            id: 16,
+            name: "F",
+            category: "Plant Nutrition",
+            image: "F (FRUITING PROMOTER).png",
+            description: "F is a specialized fruiting promoter that enhances fruit set, size, and uniformity. Contains key nutrients and plant growth regulators that trigger fruit development processes.",
+            details: [],
+            application: [
+                { label: "Application Methods", value: "Can be applied through foliar spray or drip irrigation." }
+            ],
+            benefits: [
+                "Boosts hormonal activity to support reproductive growth.",
+                "Minimizes premature fruit drop and improves fruit retention.",
+                "Ideal for use in vegetables, fruits, and plantation crops.",
+                "Increases yield and fruit marketability.",
+                "Promotes better sugar accumulation and ripening.",
+                "Encourages uniform maturity.",
+                "Improves post-harvest quality."
+            ]
+        },
+        {
+            id: 17,
+            name: "Splash",
+            category: "Plant Nutrition",
+            image: "SPLASH (SILICON SPREADER).png",
+            description: "Splash is a high-performance spreader, sticker, and adjuvant designed to improve spray efficacy.",
+            details: [
+                { label: "Type", value: "Non-ionic and safe for crops." }
+            ],
+            application: [],
+            benefits: [
+                "Enhances the spreading and sticking of agrochemical solutions on plant surfaces.",
+                "Reduces runoff and increases active ingredient penetration.",
+                "Suitable for use with insecticides, fungicides, and foliar nutrients.",
+                "Helps achieve uniform spray coverage.",
+                "Minimizes wastage and drift during application.",
+                "Compatible with most tank mixes.",
+                "Reduces surface tension of water-based sprays.",
+                "Ideal for use in all crop types."
+            ]
+        },
+        {
+            id: 18,
+            name: "Humic Acid",
+            category: "Soil Health",
+            image: null,
+            description: "Humic Acid is a natural soil conditioner that enhances soil structure, fertility, and nutrient availability.",
+            details: [],
+            application: [
+                { label: "Application Methods", value: "Can be used via fertigation or soil drenching." }
+            ],
+            benefits: [
+                "Stimulates microbial activity and root growth.",
+                "Improves cation exchange capacity (CEC) of soils.",
+                "Enhances uptake of nutrients like nitrogen, phosphorus, and potassium.",
+                "Buffers against harmful soil pH levels and toxins.",
+                "Increases water retention and aeration.",
+                "Suitable for use in organic and conventional farming.",
+                "Promotes long-term soil health.",
+                "Supports sustainable crop production."
+            ]
+        },
+        {
+            id: 19,
+            name: "Fulvic Acid",
+            category: "Soil Health",
+            image: null,
+            description: "Fulvic Acid is a low molecular weight organic acid that acts as a chelating agent and bio-stimulant.",
+            details: [],
+            application: [],
+            benefits: [
+                "Improves absorption and transport of nutrients within the plant.",
+                "Enhances root development and metabolic activity.",
+                "Helps plants recover from abiotic stress.",
+                "Boosts photosynthesis and enzyme functions.",
+                "Compatible with most fertilizers and micronutrients.",
+                "Promotes balanced plant growth and productivity.",
+                "Increases nutrient use efficiency.",
+                "Useful in all soil types and crop systems.",
+                "Encourages healthier and more resilient crops."
+            ]
+        },
+        {
+            id: 20,
+            name: "Amino Acid 80%",
+            category: "Plant Nutrition",
+            image: null,
+            description: "Amino Acid 80% is a concentrated formulation rich in plant-derived amino acids essential for protein synthesis and stress management.",
+            details: [],
+            application: [
+                { label: "Application Methods", value: "Can be applied through foliar spray or fertigation." }
+            ],
+            benefits: [
+                "Supports enzymatic activities and metabolic functions.",
+                "Promotes faster growth and cell division.",
+                "Enhances flowering and fruiting stages.",
+                "Improves resistance to environmental stress like drought and temperature fluctuations.",
+                "Stimulates microbial activity in the rhizosphere.",
+                "Boosts crop quality and yield.",
+                "Non-toxic and eco-friendly.",
+                "Ideal for high-value crops."
+            ]
+        },
+        {
+            id: 21,
+            name: "Seaweed Extract",
+            category: "Plant Nutrition",
+            image: null,
+            description: "Seaweed Extract is a natural bio-stimulant derived from marine algae, rich in plant hormones, trace minerals, and polysaccharides.",
+            details: [],
+            application: [],
+            benefits: [
+                "Promotes root growth and shoot development.",
+                "Enhances flowering, fruiting, and stress tolerance.",
+                "Improves plant immunity and resilience.",
+                "Increases chlorophyll content and photosynthetic efficiency.",
+                "Suitable for all crops and growth stages.",
+                "Can be used in organic agriculture.",
+                "Helps in recovery from transplant shock.",
+                "Improves crop vigor and productivity.",
+                "Eco-friendly and biodegradable."
+            ]
+        }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const pages = document.querySelectorAll('.page');
+        const navLinksContainer = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const hamburger = document.getElementById('hamburger-menu');
+        const productGridContainer = document.getElementById('product-grid-container');
+        const productDetailContainer = document.getElementById('product-detail-container');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        // --- UPDATED: Intersection Observer for Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    // This makes the animation reversible
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is in view
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+        
+        const showPage = (pageId, filter = null) => {
+            pages.forEach(page => page.classList.remove('active'));
+            const newPage = document.getElementById(pageId);
+            if (newPage) newPage.classList.add('active');
+            
+            window.scrollTo(0, 0);
+
+            if (pageId === 'products-page') {
+                const targetFilter = filter || 'all';
+                renderProducts(targetFilter);
+                if (filterButtons.length > 0) {
+                    filterButtons.forEach(btn => {
+                        btn.classList.toggle('active', btn.dataset.filter === targetFilter);
+                    });
+                }
+            }
+        };
+
+        // --- Navigation Logic ---
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const target = e.currentTarget;
+                const isScrollLink = target.classList.contains('scroll-link');
+                
+                if (isScrollLink) {
+                    e.preventDefault();
+                    showPage('home');
+                    setTimeout(() => {
+                        const targetId = target.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if(targetElement) {
+                           const offset = document.querySelector('.header').offsetHeight;
+                           const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+                           window.scrollTo({ top: targetPosition, behavior: 'smooth'});
+                        }
+                    }, 100);
+
+                } else {
+                    e.preventDefault();
+                    const pageId = target.getAttribute('data-page');
+                    const filter = target.getAttribute('data-filter');
+                    if (pageId) {
+                        showPage(pageId, filter);
+                    }
+                }
+                
+                if(navLinksContainer.classList.contains('active')){
+                    navLinksContainer.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+
+        // --- Hamburger Menu Logic ---
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinksContainer.classList.toggle('active');
+        });
+
+
+        const renderProducts = (filter = 'all') => {
+            if (!productGridContainer) return;
+            productGridContainer.innerHTML = '';
+            const filteredProducts = filter === 'all' 
+                ? productDatabase 
+                : productDatabase.filter(p => p.category === filter);
+
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-product-id', product.id);
+                card.innerHTML = `
+                    <div class="product-card-img-container">
+                        <img src="${product.image || 'SACNUTRINO LOGO.png'}" alt="${product.name}" onerror="this.onerror=null;this.src='SACNUTRINO LOGO.png';">
+                    </div>
+                    <div class="product-card-info">
+                        <h3>${product.name.split('(')[0].trim()}</h3>
+                        <p>${product.category}</p>
+                    </div>
+                `;
+                card.addEventListener('click', () => showProductDetail(product.id));
+                productGridContainer.appendChild(card);
+            });
+        };
+
+        const showProductDetail = (productId) => {
+            const product = productDatabase.find(p => p.id === parseInt(productId));
+            if (!product || !productDetailContainer) return;
+            
+            const createList = (items) => items.map(item => `<li><strong>${item.label}</strong><span>${item.value}</span></li>`).join('');
+            const createBenefitList = (items) => items.map(item => `<li>${item}</li>`).join('');
+
+            productDetailContainer.innerHTML = `
+                <div class="product-detail-layout">
+                    <div class="product-detail-image">
+                         <img src="${product.image || 'SACNUTRINO LOGO.png'}" alt="${product.name}" onerror="this.onerror=null;this.src='SACNUTRINO LOGO.png';">
+                    </div>
+                    <div class="product-detail-content">
+                        <h1>${product.name}</h1>
+                        <p class="description">${product.description}</p>
+                        <a href="#footer" class="btn">Request a Quote</a>
+
+                        <div class="product-tabs">
+                            <div class="tab-buttons">
+                                <button class="tab-btn active" data-tab="benefits">Benefits</button>
+                                ${product.details && product.details.length > 0 ? '<button class="tab-btn" data-tab="details">Details</button>' : ''}
+                                ${product.application && product.application.length > 0 ? '<button class="tab-btn" data-tab="application">Application</button>' : ''}
+                            </div>
+                            <div id="benefits" class="tab-content active"><ul>${createBenefitList(product.benefits)}</ul></div>
+                            ${product.details && product.details.length > 0 ? `<div id="details" class="tab-content"><ul>${createList(product.details)}</ul></div>` : ''}
+                            ${product.application && product.application.length > 0 ? `<div id="application" class="tab-content"><ul>${createList(product.application)}</ul></div>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+            showPage('product-detail-page');
+            
+            const tabButtons = productDetailContainer.querySelectorAll('.tab-btn');
+            const tabContents = productDetailContainer.querySelectorAll('.tab-content');
+
+            if(tabButtons.length > 0) {
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        const tabId = button.dataset.tab;
+                        tabContents.forEach(content => {
+                            content.classList.remove('active');
+                            if (content.id === tabId) {
+                                content.classList.add('active');
+                            }
+                        });
+                    });
+                });
+            }
+        };
+
+        if (filterButtons.length > 0) {
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.dataset.filter;
+                    filterButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
+                    renderProducts(filter);
+                });
+            });
+        }
+        
+        if (productGridContainer) {
+            renderProducts();
+        }
+    });
+    </script>
+</body>
+</html>
